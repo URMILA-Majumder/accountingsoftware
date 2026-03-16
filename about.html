@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Accounting Software</title>
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- custom css file link -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/accounting.css">
+</head>
+<body>
+
+    <!-- header section starts -->
+    <header class="header">
+        <section class="flex">
+            <a href="index.html" class="logo"> <i class="fas fa-calculator"></i>Accounting</a>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">home</a></li>
+                    <li><a href="about.html" class="active">about</a></li>
+                    <li><a href="#">accounting <i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="index.html#payment">payment</a></li>
+                            <li><a href="index.html#receipt">receipt</a></li>
+                            <li><a href="index.html#journal">journal</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">reports <i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="ledger.html">ledger</a></li>
+                            <li><a href="trial-balance.html">trial balance</a></li>
+                            <li><a href="profit-loss.html">profit & loss</a></li>
+                            <li><a href="balance-sheet.html">balance sheet</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">contact</a></li>
+                </ul>
+            </nav>
+
+            <div id="menu-btn" class="fas fa-bars-staggered"></div>
+
+        </section>
+    </header>
+    <!-- header section ends -->
+
+    <!-- main content starts -->
+    <main>
+        <section class="about-section">
+            <h1 class="heading">about <span>us</span></h1>
+            
+            <div class="about-box">
+                <div class="about-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <h2>Accounting</h2>
+                <p class="about-text">
+                    We provide simple and reliable accounting software for businesses. 
+                    Our platform helps you manage payments, receipts, and financial reports easily.
+                </p>
+                
+                <div class="about-stats">
+                    <div class="stat">
+                        <div class="stat-num">500+</div>
+                        <div class="stat-label">Clients</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num">50k+</div>
+                        <div class="stat-label">Transactions</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num">4.8</div>
+                        <div class="stat-label">Rating</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- main content ends -->
+
+    <!-- footer section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-youtube"></a>
+            </div>
+            <div class="credit">&copy; 2026 <span>Khoium's Accounting</span>. All rights reserved.</div>
+        </section>
+    </footer>
+    <!-- footer section ends -->
+
+    <!-- custom js file link -->
+    <script src="js/script.js"></script>
+    
+    <style>
+        .about-section {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .about-box {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .about-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .about-box h2 {
+            font-size: 2.8rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text {
+            font-size: 1.6rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.4rem;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            .about-stats {
+                gap: 2rem;
+            }
+            
+            .stat-num {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</body>
+</html>

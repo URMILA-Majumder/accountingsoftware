@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Us - Get in touch with our team for support and inquiries">
+    <title>Contact Us - Professional Accounting Software</title>
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- custom css file link -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/accounting.css">
+</head>
+<body>
+
+    <!-- header section starts -->
+    <header class="header">
+        <section class="flex">
+            <a href="index.html" class="logo"> <i class="fas fa-calculator"></i>Accounting</a>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">home</a></li>
+                    <li><a href="about.html">about</a></li>
+                    <li><a href="#">accounting <i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="index.html#payment">payment</a></li>
+                            <li><a href="index.html#receipt">receipt</a></li>
+                            <li><a href="index.html#journal">journal</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">reports <i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="ledger.html">ledger</a></li>
+                            <li><a href="trial-balance.html">trial balance</a></li>
+                            <li><a href="profit-loss.html">profit & loss</a></li>
+                            <li><a href="balance-sheet.html">balance sheet</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html" class="active">contact</a></li>
+                </ul>
+            </nav>
+
+            <div id="menu-btn" class="fas fa-bars-staggered"></div>
+
+        </section>
+    </header>
+    <!-- header section ends -->
+
+    <!-- main content starts -->
+    <main>
+        <!-- contact section starts -->
+        <section class="contact-section">
+            <h1 class="heading">contact <span>us</span></h1>
+            
+            <div class="contact-container">
+                <!-- Contact Info Cards -->
+                <div class="contact-info-grid">
+                    <div class="info-card glass-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Visit Us</h3>
+                        <p>123 Gulshan Avenue, Dhaka 1212, Bangladesh</p>
+                        <a href="#" class="info-link">Get Directions <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="info-card glass-card">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>Call Us</h3>
+                        <p>+880 1234 567890</p>
+                        <p>+880 1987 654321</p>
+                        <a href="tel:+8801234567890" class="info-link">Call Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="info-card glass-card">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email Us</h3>
+                        <p>info@accounting.com</p>
+                        <p>support@accounting.com</p>
+                        <a href="mailto:info@khoiumaccounting.com" class="info-link">Send Email <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="info-card glass-card">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Working Hours</h3>
+                        <p>Sun - Thu: 9:00 AM - 6:00 PM</p>
+                        <p>Fri - Sat: Closed</p>
+                        <span class="info-badge">24/7 Online Support</span>
+                    </div>
+                </div>
+
+                <!-- Contact Form & Map -->
+                <div class="contact-form-wrapper glass-card">
+                    <div class="form-header">
+                        <h2><i class="fas fa-paper-plane"></i> Send Us a Message</h2>
+                        <p>We'll get back to you within 24 hours</p>
+                    </div>
+                    
+                    <form id="contactForm" class="contact-form" onsubmit="handleContactSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name"><i class="fas fa-user"></i> Your Name *</label>
+                                <input type="text" id="name" placeholder="Enter your full name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email"><i class="fas fa-envelope"></i> Email Address *</label>
+                                <input type="email" id="email" placeholder="Enter your email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+                                <input type="tel" id="phone" placeholder="Enter your phone number">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject"><i class="fas fa-tag"></i> Subject *</label>
+                                <select id="subject" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="support">Technical Support</option>
+                                    <option value="sales">Sales & Pricing</option>
+                                    <option value="feedback">Feedback</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message"><i class="fas fa-comment"></i> Your Message *</label>
+                            <textarea id="message" rows="5" placeholder="Write your message here..." required></textarea>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="consent" required>
+                                <span>I agree to the <a href="#">Privacy Policy</a> and consent to being contacted</span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                            <button type="reset" class="btn btn-secondary" onclick="resetContactForm()">
+                                <i class="fas fa-redo"></i> Reset
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Map Section -->
+                <div class="map-section">
+                    <div class="map-container glass-card">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.9024424301397!2d90.3915801!3d23.7460798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b3e7e7e7e7%3A0x3e7e7e7e7e7e7e7e!2sGulshan%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1620000000000!5m2!1sen!2sbd" 
+                            width="100%" 
+                            height="400" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="faq-section">
+                    <h2 class="section-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+                    
+                    <div class="faq-grid">
+                        <div class="faq-item glass-card">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <h3>How quickly do you respond to inquiries?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>We typically respond to all inquiries within 24 hours during business days. For urgent matters, we recommend calling our support line.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item glass-card">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <h3>Do you offer demo sessions?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Yes! We offer free demo sessions for potential clients. Contact us to schedule a personalized demonstration.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item glass-card">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <h3>What are your support hours?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Our support team is available Sunday through Thursday, 9 AM to 6 PM. We also offer 24/7 online support through our ticket system.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item glass-card">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <h3>Do you provide training?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Absolutely! We provide comprehensive training for all our clients, including video tutorials, documentation, and live training sessions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- contact section ends -->
+    </main>
+    <!-- main content ends -->
+
+    <!-- footer section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-youtube"></a>
+            </div>
+            <div class="credit">&copy; 2026 <span>Accounting</span>. All rights reserved.</div>
+        </section>
+    </footer>
+    <!-- footer section ends -->
+
+    <!-- custom js file link -->
+    <script src="js/script.js"></script>
+    
+    <script>
+        // Contact form submission handler
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send this to your backend
+            console.log('Form submitted:', { name, email, phone, subject, message });
+            
+            // Show success message
+            showNotification('Thank you for your message! We\'ll get back to you soon.', 'success');
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+        }
+        
+        function resetContactForm() {
+            document.getElementById('contactForm').reset();
+        }
+        
+        // FAQ toggle function
+        function toggleFAQ(element) {
+            const faqItem = element.closest('.faq-item');
+            const answer = faqItem.querySelector('.faq-answer');
+            const icon = element.querySelector('i');
+            
+            if (faqItem.classList.contains('active')) {
+                faqItem.classList.remove('active');
+                answer.style.maxHeight = '0';
+                answer.style.padding = '0 2rem';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                faqItem.classList.add('active');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+                answer.style.padding = '0 2rem 2rem';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+        
+        // Notification function
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.innerHTML = `
+                <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-info-circle'}"></i>
+                <span>${message}</span>
+            `;
+            
+            notification.style.cssText = `
+                position: fixed;
+                top: 2rem;
+                right: 2rem;
+                padding: 1.5rem 2.5rem;
+                background: ${type === 'success' ? 'linear-gradient(135deg, #84fab0, #8fd3f4)' : 'linear-gradient(135deg, #667eea, #764ba2)'};
+                color: ${type === 'success' ? '#2d3748' : 'white'};
+                border-radius: 50px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+                z-index: 10000;
+                animation: slideInRight 0.3s ease;
+                font-size: 1.4rem;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+    </script>
+    
+    <!-- Add this style block for contact page specific styles -->
+    <style>
+        .contact-section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: var(--glass-border);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            padding: 2.5rem;
+        }
+
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-card {
+            text-align: center;
+        }
+
+        .info-icon {
+            width: 6rem;
+            height: 6rem;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #667eea20, #764ba220);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #667eea;
+        }
+
+        .info-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .info-card p {
+            font-size: 1.4rem;
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .info-link {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 1.4rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .info-link i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .info-link:hover i {
+            transform: translateX(5px);
+        }
+
+        .info-badge {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, #84fab020, #8fd3f420);
+            color: #10b981;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .contact-form-wrapper {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .form-header h2 {
+            font-size: 2.5rem;
+            color: var(--black);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .form-header h2 i {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .form-header p {
+            font-size: 1.6rem;
+            color: var(--light-text);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 0.8rem;
+        }
+
+        .form-group label i {
+            color: #667eea;
+            margin-right: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            font-size: 1.5rem;
+            background: var(--bg-light);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--black);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            outline: none;
+        }
+
+        .checkbox-group {
+            margin: 1rem 0;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.4rem;
+            color: var(--black);
+            cursor: pointer;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 1.8rem;
+            height: 1.8rem;
+            accent-color: #667eea;
+        }
+
+        .checkbox-label a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .checkbox-label a:hover {
+            text-decoration: underline;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .form-actions button {
+            flex: 1;
+            padding: 1.4rem;
+            font-size: 1.6rem;
+        }
+
+        .map-section {
+            margin-bottom: 4rem;
+        }
+
+        .map-container {
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .map-container iframe {
+            display: block;
+        }
+
+        .faq-section {
+            margin-top: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .section-title i {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .faq-item {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .faq-question h3 {
+            font-size: 1.6rem;
+            color: var(--black);
+            margin: 0;
+        }
+
+        .faq-question i {
+            font-size: 1.8rem;
+            color: #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer p {
+            font-size: 1.4rem;
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 0 2rem 2rem;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .contact-info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</body>
+</html>

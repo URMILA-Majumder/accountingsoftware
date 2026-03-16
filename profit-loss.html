@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View Profit & Loss Statement - Professional accounting software for income and expense analysis">
+    <title>Profit & Loss Statement - Professional Accounting Software</title>
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Flatpickr Calendar CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
+    <!-- custom css file link -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/accounting.css">
+    <link rel="stylesheet" href="css/reports.css">
+</head>
+<body>
+
+    <!-- header section starts -->
+    <header class="header">
+        <section class="flex">
+            <a href="index.html" class="logo"> <i class="fas fa-calculator"></i>Accounting</a>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">home</a></li>
+                    <li><a href="about.html">about</a></li>
+                    <li><a href="#">accounting <i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="index.html#payment">payment</a></li>
+                            <li><a href="index.html#receipt">receipt</a></li>
+                            <li><a href="index.html#journal">journal</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">reports <i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="ledger.html">ledger</a></li>
+                            <li><a href="trial-balance.html">trial balance</a></li>
+                            <li><a href="profit-loss.html" class="active">profit & loss</a></li>
+                            <li><a href="balance-sheet.html">balance sheet</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">contact</a></li>
+                </ul>
+            </nav>
+
+            <div id="menu-btn" class="fas fa-bars-staggered"></div>
+
+        </section>
+    </header>
+    <!-- header section ends -->
+
+    <!-- main content starts -->
+    <main>
+        <section class="report-section">
+            <h1 class="heading">profit & <span>loss</span></h1>
+            
+            <div class="report-controls">
+                <div class="date-range">
+                    <div class="form-group">
+                        <label for="from-date"><i class="fas fa-calendar"></i> from date *</label>
+                        <input type="text" id="from-date" class="date-picker" placeholder="select from date">
+                    </div>
+                    <div class="form-group">
+                        <label for="to-date"><i class="fas fa-calendar"></i> to date *</label>
+                        <input type="text" id="to-date" class="date-picker" placeholder="select to date">
+                    </div>
+                    <button class="btn btn-primary" onclick="loadProfitLoss()">
+                        <i class="fas fa-search"></i> load report
+                    </button>
+                </div>
+                <div class="report-actions">
+                    <div class="export-options">
+                        <button class="btn btn-success">
+                            <i class="fas fa-download"></i> export <i class="fas fa-angle-down"></i>
+                        </button>
+                        <div class="export-dropdown">
+                            <a href="#" onclick="printReport()"><i class="fas fa-print"></i> Print</a>
+                            <a href="#" onclick="exportToPDF()"><i class="fas fa-file-pdf"></i> PDF</a>
+                            <a href="#" onclick="exportToExcel()"><i class="fas fa-file-excel"></i> Excel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="report-content" class="report-content">
+                <div class="loading">
+                    <i class="fas fa-chart-line"></i>
+                    <p>select date range to view profit & loss statement</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- main content ends -->
+
+    <!-- footer section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-youtube"></a>
+            </div>
+            <div class="credit">&copy; 2026 <span>Khoium's Accounting</span>. All rights reserved.</div>
+        </section>
+    </footer>
+    <!-- footer section ends -->
+
+    <!-- Flatpickr Calendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    
+    <!-- custom js file link -->
+    <script src="js/script.js"></script>
+    <script src="js/accounting.js"></script>
+    <script src="js/reports.js"></script>
+    
+    <script>
+        // Initialize flatpickr
+        flatpickr(".date-picker", {
+            dateFormat: "Y-m-d",
+            defaultDate: new Date()
+        });
+
+        function loadProfitLoss() {
+            const fromDate = document.getElementById('from-date').value;
+            const toDate = document.getElementById('to-date').value;
+            
+            if (!fromDate || !toDate) {
+                alert('Please select both from and to dates');
+                return;
+            }
+
+            const content = document.getElementById('report-content');
+            content.innerHTML = `
+                <div class="report-header">
+                    <h2>Profit & Loss Statement</h2>
+                    <p><i class="fas fa-calendar"></i> ${fromDate} to ${toDate}</p>
+                </div>
+                
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>Particulars</th>
+                            <th width="20%">Notes</th>
+                            <th width="20%">Amount (Tk)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="3" style="background: linear-gradient(135deg, #84fab020, #8fd3f420); font-weight: 700; font-size: 1.6rem; color: #10b981;">
+                                <i class="fas fa-arrow-up"></i> INCOME
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Sales Revenue</td>
+                            <td>1</td>
+                            <td class="debit-amount">850,000.00</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Service Revenue</td>
+                            <td>2</td>
+                            <td class="debit-amount">320,000.00</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Interest Income</td>
+                            <td>3</td>
+                            <td class="debit-amount">15,000.00</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Other Income</td>
+                            <td>4</td>
+                            <td class="debit-amount">8,500.00</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="2"><strong>Total Income</strong></td>
+                            <td><strong>1,193,500.00</strong></td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="3" style="background: linear-gradient(135deg, #fc818120, #f5656520); font-weight: 700; font-size: 1.6rem; color: #ef4444;">
+                                <i class="fas fa-arrow-down"></i> EXPENSES
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Cost of Goods Sold</td>
+                            <td>5</td>
+                            <td class="credit-amount">450,000.00</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Salary & Wages</td>
+                            <td>6</td>
+                            <td class="credit-amount">180,000.00</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Rent Expense</td>
+                            <td>7</td>
+                            <td class="credit-amount">60,000.00</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Utilities</td>
+                            <td>8</td>
+                            <td class="credit-amount">24,000.00</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Marketing & Advertising</td>
+                            <td>9</td>
+                            <td class="credit-amount">35,000.00</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Depreciation</td>
+                            <td>10</td>
+                            <td class="credit-amount">18,000.00</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Insurance</td>
+                            <td>11</td>
+                            <td class="credit-amount">12,000.00</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Office Expenses</td>
+                            <td>12</td>
+                            <td class="credit-amount">15,500.00</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Travel & Entertainment</td>
+                            <td>13</td>
+                            <td class="credit-amount">22,000.00</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Professional Fees</td>
+                            <td>14</td>
+                            <td class="credit-amount">10,000.00</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="2"><strong>Total Expenses</strong></td>
+                            <td><strong>826,500.00</strong></td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="3" style="background: linear-gradient(135deg, #667eea20, #764ba220); font-weight: 700; font-size: 1.8rem;">
+                                NET PROFIT / (LOSS)
+                            </td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="2"><strong>Net Profit Before Tax</strong></td>
+                            <td class="debit-amount"><strong>367,000.00</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Income Tax Expense (25%)</td>
+                            <td>15</td>
+                            <td class="credit-amount">91,750.00</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="2"><strong>Net Profit After Tax</strong></td>
+                            <td class="debit-amount" style="font-size: 2rem;"><strong>275,250.00</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="report-summary">
+                    <div class="summary-item">
+                        <div class="label">Total Income</div>
+                        <div class="value positive">1,193,500.00</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="label">Total Expenses</div>
+                        <div class="value negative">826,500.00</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="label">Gross Profit</div>
+                        <div class="value positive">367,000.00</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="label">Net Profit</div>
+                        <div class="value positive">275,250.00</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; display: flex; gap: 2rem; justify-content: center;">
+                    <div class="badge badge-success" style="padding: 1rem 2rem; font-size: 1.4rem;">
+                        <i class="fas fa-chart-pie"></i> Profit Margin: 23.06%
+                    </div>
+                    <div class="badge badge-primary" style="padding: 1rem 2rem; font-size: 1.4rem;">
+                        <i class="fas fa-percent"></i> Operating Ratio: 69.25%
+                    </div>
+                </div>
+            `;
+        }
+
+        function printReport() {
+            window.print();
+        }
+
+        function exportToPDF() {
+            alert('PDF export functionality will be implemented here');
+        }
+
+        function exportToExcel() {
+            alert('Excel export functionality will be implemented here');
+        }
+    </script>
+    
+</body>
+</html>

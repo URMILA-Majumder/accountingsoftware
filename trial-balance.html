@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View Trial Balance - Professional accounting software for verifying debit and credit totals">
+    <title>Trial Balance - Professional Accounting Software</title>
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Flatpickr Calendar CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
+    <!-- custom css file link -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/accounting.css">
+    <link rel="stylesheet" href="css/reports.css">
+</head>
+<body>
+
+    <!-- header section starts -->
+    <header class="header">
+        <section class="flex">
+            <a href="index.html" class="logo"> <i class="fas fa-calculator"></i>Accounting</a>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">home</a></li>
+                    <li><a href="about.html">about</a></li>
+                    <li><a href="#">accounting <i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="index.html#payment">payment</a></li>
+                            <li><a href="index.html#receipt">receipt</a></li>
+                            <li><a href="index.html#journal">journal</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">reports <i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="ledger.html">ledger</a></li>
+                            <li><a href="trial-balance.html" class="active">trial balance</a></li>
+                            <li><a href="profit-loss.html">profit & loss</a></li>
+                            <li><a href="balance-sheet.html">balance sheet</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">contact</a></li>
+                </ul>
+            </nav>
+
+            <div id="menu-btn" class="fas fa-bars-staggered"></div>
+
+        </section>
+    </header>
+    <!-- header section ends -->
+
+    <!-- main content starts -->
+    <main>
+        <section class="report-section">
+            <h1 class="heading">trial <span>balance</span></h1>
+            
+            <div class="report-controls">
+                <div class="date-range">
+                    <div class="form-group">
+                        <label for="as-of-date"><i class="fas fa-calendar"></i> as of date *</label>
+                        <input type="text" id="as-of-date" class="date-picker" placeholder="select date">
+                    </div>
+                    <button class="btn btn-primary" onclick="loadTrialBalance()">
+                        <i class="fas fa-search"></i> load report
+                    </button>
+                </div>
+                <div class="report-actions">
+                    <div class="export-options">
+                        <button class="btn btn-success">
+                            <i class="fas fa-download"></i> export <i class="fas fa-angle-down"></i>
+                        </button>
+                        <div class="export-dropdown">
+                            <a href="#" onclick="printReport()"><i class="fas fa-print"></i> Print</a>
+                            <a href="#" onclick="exportToPDF()"><i class="fas fa-file-pdf"></i> PDF</a>
+                            <a href="#" onclick="exportToExcel()"><i class="fas fa-file-excel"></i> Excel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="report-content" class="report-content">
+                <div class="loading">
+                    <i class="fas fa-scale-balanced"></i>
+                    <p>select a date to view trial balance</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- main content ends -->
+
+    <!-- footer section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-youtube"></a>
+            </div>
+            <div class="credit">&copy; 2026 <span>Khoium's Accounting</span>. All rights reserved.</div>
+        </section>
+    </footer>
+    <!-- footer section ends -->
+
+    <!-- Flatpickr Calendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    
+    <!-- custom js file link -->
+    <script src="js/script.js"></script>
+    <script src="js/accounting.js"></script>
+    <script src="js/reports.js"></script>
+    
+    <script>
+        // Initialize flatpickr
+        flatpickr(".date-picker", {
+            dateFormat: "Y-m-d",
+            defaultDate: new Date()
+        });
+
+        function loadTrialBalance() {
+            const asOfDate = document.getElementById('as-of-date').value;
+            
+            if (!asOfDate) {
+                alert('Please select a date');
+                return;
+            }
+
+            const content = document.getElementById('report-content');
+            content.innerHTML = `
+                <div class="report-header">
+                    <h2>Trial Balance</h2>
+                    <p><i class="fas fa-calendar"></i> As of ${asOfDate}</p>
+                </div>
+                
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>Account Code</th>
+                            <th>Account Name</th>
+                            <th>Account Type</th>
+                            <th>Debit (Tk)</th>
+                            <th>Credit (Tk)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1010</td>
+                            <td>Cash in Hand</td>
+                            <td><span class="badge badge-primary">Asset</span></td>
+                            <td class="debit-amount">850,000.00</td>
+                            <td class="credit-amount">-</td>
+                        </tr>
+                        <tr>
+                            <td>1020</td>
+                            <td>Bank Accounts</td>
+                            <td><span class="badge badge-primary">Asset</span></td>
+                            <td class="debit-amount">2,500,000.00</td>
+                            <td class="credit-amount">-</td>
+                        </tr>
+                        <tr>
+                            <td>1030</td>
+                            <td>Accounts Receivable</td>
+                            <td><span class="badge badge-primary">Asset</span></td>
+                            <td class="debit-amount">450,000.00</td>
+                            <td class="credit-amount">-</td>
+                        </tr>
+                        <tr>
+                            <td>1040</td>
+                            <td>Inventory</td>
+                            <td><span class="badge badge-primary">Asset</span></td>
+                            <td class="debit-amount">680,000.00</td>
+                            <td class="credit-amount">-</td>
+                        </tr>
+                        <tr>
+                            <td>1050</td>
+                            <td>Fixed Assets</td>
+                            <td><span class="badge badge-primary">Asset</span></td>
+                            <td class="debit-amount">3,200,000.00</td>
+                            <td class="credit-amount">-</td>
+                        </tr>
+                        <tr>
+                            <td>1060</td>
+                            <td>Prepaid Expenses</td>
+                            <td><span class="badge badge-primary">Asset</span></td>
+                            <td class="debit-amount">45,000.00</td>
+                            <td class="credit-amount">-</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>2010</td>
+                            <td>Accounts Payable</td>
+                            <td><span class="badge badge-warning">Liability</span></td>
+                            <td class="debit-amount">-</td>
+                            <td class="credit-amount">380,000.00</td>
+                        </tr>
+                        <tr>
+                            <td>2020</td>
+                            <td>Short-term Loans</td>
+                            <td><span class="badge badge-warning">Liability</span></td>
+                            <td class="debit-amount">-</td>
+                            <td class="credit-amount">250,000.00</td>
+                        </tr>
+                        <tr>
+                            <td>2030</td>
+                            <td>Long-term Loans</td>
+                            <td><span class="badge badge-warning">Liability</span></td>
+                            <td class="debit-amount">-</td>
+                            <td class="credit-amount">1,200,000.00</td>
+                        </tr>
+                        <tr>
+                            <td>2040</td>
+                            <td>Accrued Expenses</td>
+                            <td><span class="badge badge-warning">Liability</span></td>
+                            <td class="debit-amount">-</td>
+                            <td class="credit-amount">65,000.00</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>3010</td>
+                            <td>Share Capital</td>
+                            <td><span class="badge badge-success">Equity</span></td>
+                            <td class="debit-amount">-</td>
+                            <td class="credit-amount">2,500,000.00</td>
+                        </tr>
+                        <tr>
+                            <td>3020</td>
+                            <td>Retained Earnings</td>
+                            <td><span class="badge badge-success">Equity</span></td>
+                            <td class="debit-amount">-</td>
+                            <td class="credit-amount">1,850,000.00</td>
+                        </tr>
+                        <tr>
+                            <td>3030</td>
+                            <td>Drawings</td>
+                            <td><span class="badge badge-success">Equity</span></td>
+                            <td class="debit-amount">120,000.00</td>
+                            <td class="credit-amount">-</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>4010</td>
+                            <td>Sales Revenue</td>
+                            <td><span class="badge badge-info">Income</span></td>
+                            <td class="debit-amount">-</td>
+                            <td class="credit-amount">1,850,000.00</td>
+                        </tr>
+                        <tr>
+                            <td>4020</td>
+                            <td>Service Revenue</td>
+                            <td><span class="badge badge-info">Income</span></td>
+                            <td class="debit-amount">-</td>
+                            <td class="credit-amount">420,000.00</td>
+                        </tr>
+                        <tr>
+                            <td>4030</td>
+                            <td>Interest Income</td>
+                            <td><span class="badge badge-info">Income</span></td>
+                            <td class="debit-amount">-</td>
+                            <td class="credit-amount">15,000.00</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>5010</td>
+                            <td>Cost of Goods Sold</td>
+                            <td><span class="badge badge-danger">Expense</span></td>
+                            <td class="debit-amount">950,000.00</td>
+                            <td class="credit-amount">-</td>
+                        </tr>
+                        <tr>
+                            <td>5020</td>
+                            <td>Salary Expense</td>
+                            <td><span class="badge badge-danger">Expense</span></td>
+                            <td class="debit-amount">280,000.00</td>
+                            <td class="credit-amount">-</td>
+                        </tr>
+                        <tr>
+                            <td>5030</td>
+                            <td>Rent Expense</td>
+                            <td><span class="badge badge-danger">Expense</span></td>
+                            <td class="debit-amount">120,000.00</td>
+                            <td class="credit-amount">-</td>
+                        </tr>
+                        <tr>
+                            <td>5040</td>
+                            <td>Utilities Expense</td>
+                            <td><span class="badge badge-danger">Expense</span></td>
+                            <td class="debit-amount">45,000.00</td>
+                            <td class="credit-amount">-</td>
+                        </tr>
+                        <tr>
+                            <td>5050</td>
+                            <td>Marketing Expense</td>
+                            <td><span class="badge badge-danger">Expense</span></td>
+                            <td class="debit-amount">65,000.00</td>
+                            <td class="credit-amount">-</td>
+                        </tr>
+                        <tr>
+                            <td>5060</td>
+                            <td>Depreciation Expense</td>
+                            <td><span class="badge badge-danger">Expense</span></td>
+                            <td class="debit-amount">35,000.00</td>
+                            <td class="credit-amount">-</td>
+                        </tr>
+                        <tr>
+                            <td>5070</td>
+                            <td>Insurance Expense</td>
+                            <td><span class="badge badge-danger">Expense</span></td>
+                            <td class="debit-amount">18,000.00</td>
+                            <td class="credit-amount">-</td>
+                        </tr>
+                        
+                        <tr class="total-row">
+                            <td colspan="3"><strong>TOTAL</strong></td>
+                            <td><strong>9,358,000.00</strong></td>
+                            <td><strong>9,358,000.00</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="report-summary">
+                    <div class="summary-item">
+                        <div class="label">Total Debits</div>
+                        <div class="value positive">9,358,000.00</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="label">Total Credits</div>
+                        <div class="value negative">9,358,000.00</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="label">Difference</div>
+                        <div class="value" style="color: #10b981;">0.00</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="label">Status</div>
+                        <div class="value"><span class="badge badge-success">Balanced ✓</span></div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; text-align: center;">
+                    <div class="badge badge-primary" style="padding: 1rem 2rem; font-size: 1.4rem;">
+                        <i class="fas fa-check-circle"></i> Trial Balance is in Balance
+                    </div>
+                </div>
+            `;
+        }
+
+        function printReport() {
+            window.print();
+        }
+
+        function exportToPDF() {
+            alert('PDF export functionality will be implemented here');
+        }
+
+        function exportToExcel() {
+            alert('Excel export functionality will be implemented here');
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View Balance Sheet - Professional accounting software for financial reporting">
+    <title>Balance Sheet - Professional Accounting Software</title>
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Flatpickr Calendar CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
+    <!-- custom css file link -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/accounting.css">
+    <link rel="stylesheet" href="css/reports.css">
+</head>
+<body>
+
+    <!-- header section starts -->
+    <header class="header">
+        <section class="flex">
+            <a href="index.html" class="logo"> <i class="fas fa-calculator"></i>Accounting</a>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">home</a></li>
+                    <li><a href="about.html">about</a></li>
+                    <li><a href="#">accounting <i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="index.html#payment">payment</a></li>
+                            <li><a href="index.html#receipt">receipt</a></li>
+                            <li><a href="index.html#journal">journal</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">reports <i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="ledger.html">ledger</a></li>
+                            <li><a href="trial-balance.html">trial balance</a></li>
+                            <li><a href="profit-loss.html">profit & loss</a></li>
+                            <li><a href="balance-sheet.html" class="active">balance sheet</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">contact</a></li>
+                </ul>
+            </nav>
+
+            <div id="menu-btn" class="fas fa-bars-staggered"></div>
+
+        </section>
+    </header>
+    <!-- header section ends -->
+
+    <!-- main content starts -->
+    <main>
+        <section class="report-section">
+            <h1 class="heading">balance <span>sheet</span></h1>
+            
+            <div class="report-controls">
+                <div class="date-range">
+                    <div class="form-group">
+                        <label for="as-of-date"><i class="fas fa-calendar"></i> as of date *</label>
+                        <input type="text" id="as-of-date" class="date-picker" placeholder="select date">
+                    </div>
+                    <button class="btn btn-primary" onclick="loadBalanceSheet()">
+                        <i class="fas fa-search"></i> load report
+                    </button>
+                </div>
+                <div class="report-actions">
+                    <div class="export-options">
+                        <button class="btn btn-success">
+                            <i class="fas fa-download"></i> export <i class="fas fa-angle-down"></i>
+                        </button>
+                        <div class="export-dropdown">
+                            <a href="#" onclick="exportToPDF()"><i class="fas fa-file-pdf"></i> PDF</a>
+                            <a href="#" onclick="exportToExcel()"><i class="fas fa-file-excel"></i> Excel</a>
+                            <a href="#" onclick="printReport()"><i class="fas fa-print"></i> Print</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="report-content" class="report-content">
+                <div class="loading">
+                    <i class="fas fa-chart-pie"></i>
+                    <p>select a date to view balance sheet</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- main content ends -->
+
+    <!-- footer section starts -->
+    <footer class="footer">
+        <section>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-youtube"></a>
+            </div>
+            <div class="credit">&copy; 2026 <span>Khoium's Accounting</span>. All rights reserved.</div>
+        </section>
+    </footer>
+    <!-- footer section ends -->
+
+    <!-- Flatpickr Calendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    
+    <!-- custom js file link -->
+    <script src="js/script.js"></script>
+    <script src="js/accounting.js"></script>
+    <script src="js/reports.js"></script>
+    
+    <script>
+        // Initialize flatpickr
+        flatpickr(".date-picker", {
+            dateFormat: "Y-m-d",
+            defaultDate: new Date()
+        });
+
+        function loadBalanceSheet() {
+            const date = document.getElementById('as-of-date').value;
+            if (!date) {
+                alert('Please select a date');
+                return;
+            }
+
+            const content = document.getElementById('report-content');
+            content.innerHTML = `
+                <div class="report-header">
+                    <h2>Balance Sheet</h2>
+                    <p><i class="fas fa-calendar"></i> As of ${date}</p>
+                </div>
+                
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>Particulars</th>
+                            <th width="20%">Notes</th>
+                            <th width="20%">Amount (Tk)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="3" style="background: linear-gradient(135deg, #667eea20, #764ba220); font-weight: 700; font-size: 1.6rem;">ASSETS</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Current Assets</td>
+                            <td>1</td>
+                            <td class="debit-amount">1,250,000.00</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Fixed Assets</td>
+                            <td>2</td>
+                            <td class="debit-amount">3,500,000.00</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Investments</td>
+                            <td>3</td>
+                            <td class="debit-amount">750,000.00</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="2"><strong>Total Assets</strong></td>
+                            <td><strong>5,500,000.00</strong></td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="3" style="background: linear-gradient(135deg, #667eea20, #764ba220); font-weight: 700; font-size: 1.6rem;">LIABILITIES</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Current Liabilities</td>
+                            <td>4</td>
+                            <td class="credit-amount">850,000.00</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Long-term Liabilities</td>
+                            <td>5</td>
+                            <td class="credit-amount">1,200,000.00</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="2"><strong>Total Liabilities</strong></td>
+                            <td><strong>2,050,000.00</strong></td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="3" style="background: linear-gradient(135deg, #667eea20, #764ba220); font-weight: 700; font-size: 1.6rem;">EQUITY</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Share Capital</td>
+                            <td>6</td>
+                            <td class="credit-amount">2,500,000.00</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 3rem;">Retained Earnings</td>
+                            <td>7</td>
+                            <td class="credit-amount">950,000.00</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="2"><strong>Total Equity</strong></td>
+                            <td><strong>3,450,000.00</strong></td>
+                        </tr>
+                        
+                        <tr class="total-row">
+                            <td colspan="2"><strong>Total Liabilities & Equity</strong></td>
+                            <td><strong>5,500,000.00</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="report-summary">
+                    <div class="summary-item">
+                        <div class="label">Total Assets</div>
+                        <div class="value positive">5,500,000.00</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="label">Total Liabilities</div>
+                        <div class="value">2,050,000.00</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="label">Total Equity</div>
+                        <div class="value positive">3,450,000.00</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function printReport() {
+            window.print();
+        }
+
+        function exportToPDF() {
+            alert('PDF export functionality will be implemented here');
+        }
+
+        function exportToExcel() {
+            alert('Excel export functionality will be implemented here');
+        }
+    </script>
+    
+</body>
+</html>
